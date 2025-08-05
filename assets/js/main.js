@@ -439,10 +439,19 @@ const desingSlider = new Swiper('.desingSlider', {
 });
 
 
+
 // blogSlider js
+const swiperWrapper = document.querySelector('.blogSlider .swiper-wrapper');
+const slides = swiperWrapper.querySelectorAll('.swiper-slide');
+
+if (slides.length <= 4) {
+  slides.forEach(slide => {
+    swiperWrapper.appendChild(slide.cloneNode(true));
+  });
+}
 
 var blogSlider = new Swiper(".blogSlider", {
-  slidesPerView: 5,
+  slidesPerView: 5,   // default for below smallest breakpoint (you can adjust)
   spaceBetween: 25,
   loop: true,
   pagination: {
@@ -472,15 +481,11 @@ var blogSlider = new Swiper(".blogSlider", {
     },
     1280: {
       slidesPerView: 3,
+      spaceBetween: 25,
     },
     1500: {
       slidesPerView: 4,
+      spaceBetween: 25,
     },
-
-
   },
 });
-
-
-
-

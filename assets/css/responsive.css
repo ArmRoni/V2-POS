@@ -192,6 +192,9 @@
     .footer {
         padding-top: 80px
     }
+    .pos-accordion {
+        padding-top: 132px;
+    }
 
 
 
@@ -341,6 +344,9 @@
     .footer-single-col h4 {
         font-size: 14px;
     }
+    .pos-accordion {
+        padding-top: 105px;
+    }
 
 }
 
@@ -394,6 +400,9 @@
         line-height: 22px;
         padding-bottom: 15px;
     }
+    .pos-accordion {
+        padding-top: 110px;
+    } 
 
 
 
@@ -917,6 +926,9 @@
     .our-blog-area .our-blog-title {
         padding-bottom: 40px;
     }
+    .info-block:last-child {
+        padding-top: 0px;
+    }
 
 
 
@@ -1074,7 +1086,8 @@
         display: flex;
         width: fit-content;
         margin: 0 auto;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-bottom: 10px;
     }
     .info-block ul li {
         font-size: 16px;
@@ -1149,7 +1162,9 @@
     .footer {
         padding-top: 50px;
     }
- 
+    .personalized-scroll-wrap {
+        gap: 0px;
+   }
 }
 
 
@@ -1246,9 +1261,12 @@
         padding-bottom: 50px;
     }
     .accelerate-info ul li {
-        margin-bottom: -14px;
         line-height: 22px;
         font-size: 16px;
+        padding-bottom: 8px;
+    }
+    .accelerate-info .schedul-btn {
+        margin-top: 12px;
     }
     .center-logo,
     .orbit-logo {
@@ -1399,6 +1417,18 @@
     }
     .textwidget p, .footer-single-col li a {
         font-size: 15px;
+    }
+    .accelerate-info ul li {
+        padding-left: 24px;
+    }
+    .info-block ul {
+        padding-left: 30px;
+    }
+    .info-block ul li {
+        padding-left: 0px;
+    }
+    .accelerate-info-text {
+        padding-bottom: 20px;
     }
 }
 @media only screen and (max-width: 400px) {
