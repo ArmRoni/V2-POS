@@ -441,6 +441,56 @@ const desingSlider = new Swiper('.desingSlider', {
 
 
 // blogSlider js
+// const swiperWrapper = document.querySelector('.blogSlider .swiper-wrapper');
+// const slides = swiperWrapper.querySelectorAll('.swiper-slide');
+
+// if (slides.length <= 4) {
+//   slides.forEach(slide => {
+//     swiperWrapper.appendChild(slide.cloneNode(true));
+//   });
+// }
+
+// var blogSlider = new Swiper(".blogSlider", {
+//   slidesPerView: 5,   // default for below smallest breakpoint (you can adjust)
+//   spaceBetween: 25,
+//   loop: true,
+//   pagination: {
+//     el: ".swiper-pagination-fraction",
+//     type: "fraction",
+//   },
+//     navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   on: {
+//     init: function () {
+//       updateProgress(this);
+//     },
+//     slideChange: function () {
+//       updateProgress(this);
+//     },
+//   },
+//   breakpoints: {
+//     0: {
+//       slidesPerView: 1,
+//       spaceBetween: 15,
+//     },
+//     768: {
+//       slidesPerView: 2,
+//       spaceBetween: 20,
+//     },
+//     1280: {
+//       slidesPerView: 3,
+//       spaceBetween: 25,
+//     },
+//     1500: {
+//       slidesPerView: 4,
+//       spaceBetween: 25,
+//     },
+//   },
+// });
+
+
 const swiperWrapper = document.querySelector('.blogSlider .swiper-wrapper');
 const slides = swiperWrapper.querySelectorAll('.swiper-slide');
 
@@ -451,9 +501,10 @@ if (slides.length <= 4) {
 }
 
 var blogSlider = new Swiper(".blogSlider", {
-  slidesPerView: 5,   // default for below smallest breakpoint (you can adjust)
+  slidesPerView: 5,
   spaceBetween: 25,
   loop: true,
+  speed: 700, 
   pagination: {
     el: ".swiper-pagination-fraction",
     type: "fraction",
@@ -461,14 +512,6 @@ var blogSlider = new Swiper(".blogSlider", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
-  },
-  on: {
-    init: function () {
-      updateProgress(this);
-    },
-    slideChange: function () {
-      updateProgress(this);
-    },
   },
   breakpoints: {
     0: {
@@ -481,11 +524,15 @@ var blogSlider = new Swiper(".blogSlider", {
     },
     1280: {
       slidesPerView: 3,
-      spaceBetween: 25,
     },
     1500: {
       slidesPerView: 4,
-      spaceBetween: 25,
     },
   },
 });
+
+
+
+
+
+
