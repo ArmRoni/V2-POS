@@ -122,68 +122,83 @@ animateFromDirection(".fade-in", 0, 0);
 animateFromDirection(".zoom-in", 0, 0, true);
 
 
-var dynamicPeatures = new Swiper(".dynamicPeatures", {
-  slidesPerView: 5,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination-fraction",
-    type: "fraction",
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  on: {
-    init: function () {
-      updateProgress(this);
-    },
-    slideChange: function () {
-      updateProgress(this);
-    },
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    1080: {
-      slidesPerView: 4,
-      spaceBetween: 20,
-    },
+document.addEventListener("DOMContentLoaded", () => {
+  const realSlideCount = document.querySelectorAll('.dynamicPeatures .swiper-slide:not(.swiper-slide-duplicate)').length;
 
-    1300: {
-      slidesPerView: 4,
-      spaceBetween: 20,
+  const dynamicPeatures = new Swiper(".dynamicPeatures", {
+    slidesPerView: 5,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination-fraction",
+      type: "custom",
+      renderCustom: function (swiper, current, total) {
+        // Always use real slide count
+        return `<span class="current">${current}</span> / <span class="total">${realSlideCount}</span>`;
+      },
     },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    on: {
+      init: function (swiper) {
+        // Force re-render pagination after short delay
+        setTimeout(() => {
+          swiper.pagination.render();
+          swiper.pagination.update();
+          updateProgress(swiper);
+        }, 100); // wait for loop slides to fully initialize
+      },
+      slideChange: function (swiper) {
+        updateProgress(swiper);
+      },
+      resize: function (swiper) {
+        swiper.pagination.render();
+        swiper.pagination.update();
+        updateProgress(swiper);
+      }
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1080: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1300: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1620: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+      },
+      1880: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+      },
+    },
+  });
 
-    1620: {
-      slidesPerView: 5,
-      spaceBetween: 20,
-    },
-    1880: {
-      slidesPerView: 5,
-      spaceBetween: 30,
-    },
-  },
+  function updateProgress(swiper) {
+    const progressEl = document.querySelector(".progress-width");
+    if (!progressEl) return;
+
+    const currentIndex = swiper.realIndex;
+    const progress = ((currentIndex + 1) / realSlideCount) * 100;
+
+    progressEl.style.width = `${Math.min(progress, 100)}%`;
+  }
 });
 
-function updateProgress(swiper) {
-  const progressEl = document.querySelector(".progress-width");
-  if (!progressEl) return;
 
-  const totalSlides = swiper.slides.length - swiper.loopedSlides * 2; // only real slides
-  const currentIndex = swiper.realIndex; // 0-based index
-
-  let progress = ((currentIndex + 1) / totalSlides) * 100;
-  progress = Math.min(progress, 100);
-
-  progressEl.style.width = progress + "%";
-}
 
 
 // ==========orbit-logo logo js==============
@@ -245,7 +260,6 @@ window.addEventListener('resize', updateOrbitPosition);
 
 
 
-
 // ==========text wave animation===============
     gsap.registerPlugin(ScrollTrigger);
     function wrapWords(element) {
@@ -291,7 +305,7 @@ window.addEventListener('resize', updateOrbitPosition);
 // accordion js
 jQuery(document).ready(function () {
   jQuery('.pos-accordion-header').on('click', function () {
-    const $clickedItem = $(this).closest('.pos-accordion-item');
+    const $clickedItem = jQuery(this).closest('.pos-accordion-item');
     const $accordion = $clickedItem.closest('.pos-accordion');
 
     // Close others in the same column
@@ -383,6 +397,7 @@ if (window.innerWidth > 1100) {
 }
 
 
+//==== successStories js 
 var successStories = new Swiper(".successStories", {
   slidesPerView: 5,
   spaceBetween: 30,
@@ -394,14 +409,6 @@ var successStories = new Swiper(".successStories", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
-  },
-  on: {
-    init: function () {
-      updateProgress(this);
-    },
-    slideChange: function () {
-      updateProgress(this);
-    },
   },
   breakpoints: {
     0: {
@@ -421,7 +428,6 @@ var successStories = new Swiper(".successStories", {
 
 
 // desingSlider js
-
 const desingSlider = new Swiper('.desingSlider', {
   loop: true,
   autoplay: {
@@ -438,57 +444,6 @@ const desingSlider = new Swiper('.desingSlider', {
   },
 });
 
-
-
-// blogSlider js
-// const swiperWrapper = document.querySelector('.blogSlider .swiper-wrapper');
-// const slides = swiperWrapper.querySelectorAll('.swiper-slide');
-
-// if (slides.length <= 4) {
-//   slides.forEach(slide => {
-//     swiperWrapper.appendChild(slide.cloneNode(true));
-//   });
-// }
-
-// var blogSlider = new Swiper(".blogSlider", {
-//   slidesPerView: 5,   // default for below smallest breakpoint (you can adjust)
-//   spaceBetween: 25,
-//   loop: true,
-//   pagination: {
-//     el: ".swiper-pagination-fraction",
-//     type: "fraction",
-//   },
-//     navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   on: {
-//     init: function () {
-//       updateProgress(this);
-//     },
-//     slideChange: function () {
-//       updateProgress(this);
-//     },
-//   },
-//   breakpoints: {
-//     0: {
-//       slidesPerView: 1,
-//       spaceBetween: 15,
-//     },
-//     768: {
-//       slidesPerView: 2,
-//       spaceBetween: 20,
-//     },
-//     1280: {
-//       slidesPerView: 3,
-//       spaceBetween: 25,
-//     },
-//     1500: {
-//       slidesPerView: 4,
-//       spaceBetween: 25,
-//     },
-//   },
-// });
 
 
 const swiperWrapper = document.querySelector('.blogSlider .swiper-wrapper');
@@ -530,7 +485,6 @@ var blogSlider = new Swiper(".blogSlider", {
     },
   },
 });
-
 
 
 

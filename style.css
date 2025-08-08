@@ -1,3 +1,15 @@
+/*
+Theme Name: Pos Highway V2
+Theme URI: #
+Author: #
+Author URI: #
+Description: Pos Highway is a clean, modern, stylish WordPress Theme. 
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: poshighwayv2
+Tags: theme-options, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
 
 *,
 *::before,
@@ -787,13 +799,13 @@ position: initial;
     height: 100%;
     display: flex;
 }
+.swiper-pagination-fraction .current,
 .swiper-pagination-current {
    color: #425EDB;
   font-size: 24px;
   font-weight: 500;
 }
 .swiper-pagination-total {
- 
   font-size: 18px;
   font-weight: 400;
   color: #000;
@@ -987,7 +999,7 @@ position: initial;
     padding-bottom: 30px
 }
 .empowering-brands-area .common-title {
-  max-width: 730px;
+  max-width: 900px;
   margin: 0 auto;
   padding-bottom: 60px;
 }
@@ -996,6 +1008,9 @@ position: initial;
   font-size: 18px;
   line-height: 28px;
   color: #676767;
+  max-width: 730px;
+  margin: 0 auto;
+
 }
 
 .empowering-photo-bg {
@@ -1113,6 +1128,9 @@ position: initial;
     border-radius:0px 0px 6px 6px;
     border-top: none;
     display: none;
+}
+.pos-accordion-item:first-child .pos-accordion-body {
+    display: block;
 }
 .pos-accordion-body p {
   font-size: 18px;
@@ -1614,7 +1632,7 @@ position: initial;
 .lets-discuss-from .common-title h2 {
   font-size: 28px;
   line-height: 36px;
-  padding-bottom: 30px;
+  padding-bottom: 0;
 }
 .form-group label {
   font-size: 16px;
@@ -2007,6 +2025,7 @@ position: initial;
 .blog-section-area .common-title h2 {
   color: #1C1C1C;
 }
+
 .blog-section-area .common-title {
   padding-bottom: 60px
 }
@@ -2027,10 +2046,35 @@ position: initial;
 .blogSlider .swiper-slide {
   height: auto;
 }
+.features-slide-7 .feature-icon {
+  padding: 10px;
+}
+.features-slide-1 .feature-icon,
+.features-slide-2 .feature-icon {
+  padding: 15px;
+}
+.successStories .swiper-slide {
+  height: auto;
+ }
+.success-stories-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.success-stories-bg {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-
-
-
-
-
-
+.success-stories-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.success-stories-info p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
